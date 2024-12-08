@@ -1,5 +1,5 @@
 version: "3.9"
-service:
+services:
   registry:
     image: registry:2
     ports:
