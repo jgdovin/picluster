@@ -3,19 +3,18 @@ version: '3.8'
 services:
   traefik:
     image: traefik:v3.2.1
-    container_name: traefik
     ports:
       - "80:80"
       - "8080:8080"
       - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    restart: unless-stopped
+      - ./config/traefik.yml:/etc/traefik/traefik.yml:ro
     networks:
       - proxy
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
 networks:
   proxy:
     external: true
