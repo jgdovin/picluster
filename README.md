@@ -67,7 +67,7 @@ docker service ls
 | **traefik**         | Reverse Proxy used for Cert validation        | 🚧 WIP  |
 | **prometheus**      | Monitoring and metrics collection             | 🚧 WIP  |
 | **grafana**         | Metrics visualization                         | 🚧 WIP  |
-| **nginx**           | Reverse proxy and load balancer               | 🛠 Planned |
+| **helloworld**      | Demo Nginx app to deploy to the swarm         | 🛠 Planned |
 | **nextcloud**       | Self-hosted file sharing and collaboration    | 🛠 Planned |
 
 
