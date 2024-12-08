@@ -63,6 +63,7 @@ docker service ls
 | Service             | Description                                   | Status  |
 |---------------------|-----------------------------------------------|---------|
 | **portainer**       | Docker Swarm management UI                    | ✅ Ready |
+| **registry**        | Distributed image storage                     | ✅ Ready |
 | **prometheus**      | Monitoring and metrics collection             | 🚧 WIP  |
 | **grafana**         | Metrics visualization                         | 🚧 WIP  |
 | **nginx**           | Reverse proxy and load balancer               | 🛠 Planned |
