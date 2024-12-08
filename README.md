@@ -64,6 +64,7 @@ docker service ls
 |---------------------|-----------------------------------------------|---------|
 | **portainer**       | Docker Swarm management UI                    | ✅ Ready |
 | **registry**        | Distributed image storage                     | ✅ Ready |
+| **traefik**         | Reverse Proxy used for Cert validation        | 🚧 WIP  |
 | **prometheus**      | Monitoring and metrics collection             | 🚧 WIP  |
 | **grafana**         | Metrics visualization                         | 🚧 WIP  |
 | **nginx**           | Reverse proxy and load balancer               | 🛠 Planned |
