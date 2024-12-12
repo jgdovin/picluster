@@ -9,10 +9,10 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./config/traefik.yml:/etc/traefik/traefik.yml:ro
-      - ./config/dynamic.yml:/etc/traefik/dynamic.yml:ro
-      - ./data/certs:/etc/traefik/certs/:ro
-      - ./logs/:/logs:rw
+      - /traefik.yml:/etc/traefik/traefik.yml:ro
+      - /dynamic.yml:/etc/traefik/dynamic.yml:ro
+      - /run/secrets/wildcard.g.mhl.sh.pem:/etc/traefik/certs/_wildcard.g.mhl.sh.pem:ro
+      - /run/secrets/wildcard.g.mhl.sh-key.pem:/etc/traefik/certs/_wildcard.g.mhl.sh.key:ro
     networks:
       - proxy
     environment:
@@ -32,19 +32,7 @@ services:
       placement:
         constraints:
           - node.role == manager
-  whoami:
-    image: traefik/whoami
-    networks:
-      - proxy
-    deploy:
-      labels:
-        - traefik.enable=true
-        - traefik.docker.network=proxy
-        - traefik.http.services.whoami.loadbalancer.server.port=80
-        # - traefik.http.routers.whoami.rule=Method(`GET`)
 networks:
   proxy:
     external: true
-secrets:
-  name_api_token:
-    external: true
+
