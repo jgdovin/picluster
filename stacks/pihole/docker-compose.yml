@@ -9,7 +9,7 @@ services:
       - '0.0.0.0:67:67/udp'
       - '0.0.0.0:8053:80/tcp'
     environment:
-      - TZ=${PIHOLE_TIMEZONE:'America/Denvor'}
+      - TZ=${PIHOLE_TIMEZONE:-'America/Denvor'}
       - WEBPASSWORD=/run/secrets/pihole_webpassword
     networks:
       - proxy
@@ -18,8 +18,8 @@ services:
         - traefik.enable=true
         - traefik.docker.network=proxy
         - traefik.http.services.pihole.loadbalancer.server.port=80
-        - traefik.http.routers.pihole.rule=${PIHOLE_RULES:Host(`pihole.local`)}
-        - traefik.http.routers.piehole.entrypoints=${PIHOLE_ENTRYPOINTS:web}
+        - traefik.http.routers.pihole.rule=${PIHOLE_RULES:-Host(`pihole.local`)}
+        - traefik.http.routers.piehole.entrypoints=${PIHOLE_ENTRYPOINTS:-web}
       replicas: 1
       placement:
         constraints:
