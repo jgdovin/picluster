@@ -1,0 +1,21 @@
+services:
+  app:
+    image: ignitedgeek/astro
+    deploy:
+      restart_policy:
+        condition: on-failure
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.app.rule=Host(`astro.g.mhl.sh`)"
+        - "traefik.http.routers.app.entrypoints=websecure"
+        - "traefik.http.routers.app.tls=true"
+        - "traefik.http.services.app.loadbalancer.server.port=4321"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=4321
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
