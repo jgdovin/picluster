@@ -10,14 +10,14 @@ services:
       - '0.0.0.0:8053:80/tcp'
     environment:
       - TZ=${PIHOLE_TIMEZONE:'America/Denvor'}
-      - WEBPASSWORD=${PIHOLE_WEBPASSWORD}
+      - WEBPASSWORD=/run/secrets/pihole_webpassword
     networks:
       - proxy
     deploy:
       labels:
         - traefik.enable=true
         - traefik.docker.network=proxy
-        - traefik.http.services.pihole.loadbalancer.server.port=${PIHOLE_PORT:80}
+        - traefik.http.services.pihole.loadbalancer.server.port=80
         - traefik.http.routers.pihole.rule=${PIHOLE_RULES:Host(`pihole.local`)}
         - traefik.http.routers.piehole.entrypoints=${PIHOLE_ENTRYPOINTS:web}
       replicas: 1
@@ -32,3 +32,6 @@ services:
 networks:
   proxy:
     external: true
+secrets:
+  pihole_webpassword:
+    file: ./pihole_webpassword.txt
